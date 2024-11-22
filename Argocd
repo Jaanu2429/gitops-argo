@@ -1,0 +1,30 @@
+# dev-application.yaml
+apiVersion:
+argoproj.io/v1alpha1
+kind: Application
+metadata:
+ name: bankapp-dev
+spec:
+ source:
+   repoURL: 'https://github.com/Jaanu2429/gitops-argo'
+   path: k8s
+   targetRevision: main
+ destination:
+   namespace: dev
+# prod-application.yaml
+apiVersion:
+argoproj.io/v1alpha1
+kind: Application
+metadata:
+ name: bankapp-prod
+spec:
+ source:
+   repoURL: 'https://github.com/Jaanu2429/gitops-argo'
+   path: k8s
+   targetRevision: main
+ destination:
+   namespace: prod
+
+
+
+az aks update -n  -g <Resource-Group-Name> --attach-acr <ACR-Name>
